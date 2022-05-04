@@ -39,7 +39,7 @@ sudo chmod a+w /etc/nomad.d
 
 # Nomad config file copy
 sudo mkdir -p /tmp/nomad
-sudo curl https://github.com/mamos88/nomad-in-aws/blob/main/conf/nomad/server.hcl -o /tmp/nomad/server.hcl
+sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/master/conf/nomad/server.hcl -o /tmp/nomad/server.hcl
 sudo cp /tmp/nomad/server.hcl /etc/nomad.d/server.hcl
 
 # Install Consul
@@ -61,7 +61,7 @@ sudo chmod a+w /etc/consul.d
 
 # Consul config file copy
 sudo mkdir -p /tmp/consul
-sudo curl https://github.com/mamos88/nomad-in-aws/blob/main/conf/consul/server.hcl -o /tmp/consul/server.hcl
+sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/master/conf/consul/server.hcl -o /tmp/consul/server.hcl
 sudo cp /tmp/consul/server.hcl /etc/consul.d/server.hcl
 
 for bin in cfssl cfssl-certinfo cfssljson
