@@ -1,9 +1,9 @@
 terraform {
   cloud {
-    organization = "Michael-Amos"
+    organization = "Michael-Amos" # <- Replace this with your organization
 
     workspaces {
-      name = "nomad-on-aws"
+      name = "nomad-on-aws" # <- Replace this with your workspace name
     }
   }
 }
