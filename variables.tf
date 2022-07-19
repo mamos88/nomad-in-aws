@@ -45,13 +45,8 @@ variable "nomad_node_count" {
 variable "allowed_ip_network" {
   description = "Networks allowed in security group for ingress rules"
   type        = list(any)
-  default     = ["174.26.233.160/32", "10.0.0.0/16"]
+  default     = ["184.98.68.7/32", "10.0.0.0/16"]
 }
-
-# variable "new_relic_key" {
-# 	description = "New Relic key if needed for automatic add of EC2 nodes to monitoring"
-# 	default = ""
-# }
 
 variable "az_map" {
   type = map(any)
