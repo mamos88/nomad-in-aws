@@ -27,7 +27,8 @@ variable "aws_key_name" {
 variable "nomad_node_instance_size" {
   description = "EC2 instance type/size for Nomad nodes"
   type        = string
-  default     = "t2.small"
+  # default     = "t2.small"
+  default     = "t2.micro"
 }
 
 variable "nomad_node_ami_id" {
