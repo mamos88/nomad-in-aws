@@ -11,7 +11,7 @@ resource "aws_instance" "nomad-node" {
 
   tags = {
     Terraform     = "true"
-    ProvisionedBy = "Michael Amos"
     Name          = "nomad-node-${count.index}"
+    ManagedBy     = "Terraform"
   }
 }

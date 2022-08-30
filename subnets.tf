@@ -8,6 +8,5 @@ resource "aws_subnet" "nomad-lab-pub" {
   tags = {
     Name      = "nomad-lab"
     Terraform = "true"
-    # Turbonomic = "true"
   }
 }
