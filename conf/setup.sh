@@ -5,9 +5,9 @@ set -e
 # Disable interactive apt prompts
 export DEBIAN_FRONTEND=noninteractive
 
-cd /ops
+cd ~
 
-CONFIGDIR=/ops/shared/config
+CONFIGDIR=/~/shared/config
 
 CONSULVERSION=1.12.2
 CONSULDOWNLOAD=https://releases.hashicorp.com/consul/${CONSULVERSION}/consul_${CONSULVERSION}_linux_amd64.zip
@@ -32,7 +32,7 @@ CONSULTEMPLATEDIR=/opt/consul-template
 # Dependencies
 sudo apt-get install -y software-properties-common
 sudo apt-get update
-sudo apt-get install -y unzip tree redis-tools jq curl tmux gnupg-curl
+sudo apt-get install -y unzip tree redis-tools jq curl tmux
 
 # Disable the firewall
 
