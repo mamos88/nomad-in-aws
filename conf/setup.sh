@@ -7,7 +7,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 cd ~
 
-CONFIGDIR=/~/shared/config
+CONFIGDIR=/~2/shared/config
 
 CONSULVERSION=1.12.2
 CONSULDOWNLOAD=https://releases.hashicorp.com/consul/${CONSULVERSION}/consul_${CONSULVERSION}_linux_amd64.zip

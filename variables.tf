@@ -47,7 +47,7 @@ variable "nomad_node_count" {
 variable "allowed_ip_network" {
   description = "Networks allowed in security group for ingress rules"
   type        = list(any)
-  default     = ["184.98.168.144/32", "10.0.0.0/16"]
+  default     = ["184.101.112.152/32", "10.0.0.0/16"]
 }
 
 variable "az_map" {
