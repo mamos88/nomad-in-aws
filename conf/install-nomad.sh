@@ -64,6 +64,7 @@ sudo mkdir -p /tmp/consul
 sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/master/conf/consul/server.hcl -o /tmp/consul/server.hcl
 sudo cp /tmp/consul/server.hcl /etc/consul.d/server.hcl
 
+
 for bin in cfssl cfssl-certinfo cfssljson
 do
   echo "$bin Install Beginning..."
@@ -98,6 +99,19 @@ if [ $retval -eq 0 ]; then
   sudo killall nomad
 fi
 sudo nohup nomad agent -config /etc/nomad.d/server.hcl >$HOME/nomad.log &
+
+# Configure Nomad Autostart
+sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/master/conf/nomad/nomad.service -o /tmp/nomad/nomad.service
+sudo cp /tmp/nomad/nomad.service /etc/systemd/system/nomad.service
+sudo systemctl enable nomad
+
+# Configure Consul Autostart
+sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/master/conf/consul/consul.service -o /tmp/consul/consul.service
+sudo cp /tmp/consul/consul.service /etc/systemd/system/consul.service
+sudo systemctl enable consul
+
+# Configure Docker Autostart
+sudo systemctl enable docker
 
 # Bootstrap Nomad and Consul ACL environment
 
