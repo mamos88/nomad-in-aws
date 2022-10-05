@@ -17,3 +17,4 @@ resource "aws_autoscaling_group" "NomadClientASG" {
   launch_configuration      = aws_launch_configuration.NomadClientLC.name
 #   vpc_zone_identifier       = [aws_subnet.example1.id, aws_subnet.example2.id]
   availability_zones = [aws_subnet.nomad-lab-pub.id]
+}
