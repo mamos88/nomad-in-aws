@@ -41,7 +41,7 @@ variable "nomad_node_ami_id" {
 variable "nomad_node_count" {
   description = "The number of server nodes (should be 3 or 5)"
   type        = number
-  default     = 5
+  default     = 3
 }
 
 variable "allowed_ip_network" {
@@ -57,7 +57,5 @@ variable "az_map" {
     0 = "a"
     1 = "b"
     2 = "c"
-    3 = "a"
-    4 = "b"
   }
 }
