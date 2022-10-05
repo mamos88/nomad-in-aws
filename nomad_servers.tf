@@ -1,5 +1,5 @@
-resource "aws_instance" "nomad-node" {
-  count                       = var.nomad_node_count
+resource "aws_instance" "nomad-server-node" {
+  count                       = var.nomad_server_count
   ami                         = var.nomad_node_ami_id
   instance_type               = var.nomad_node_instance_size
   key_name                    = var.aws_key_name
@@ -11,7 +11,7 @@ resource "aws_instance" "nomad-node" {
 
   tags = {
     Terraform     = "true"
-    Name          = "nomad-node-${count.index}"
+    Name          = "nomad-server-${count.index}"
     ManagedBy     = "Terraform"
   }
 }
