@@ -11,7 +11,7 @@ resource "aws_instance" "nomad-server-node" {
 
   tags = {
     Terraform     = "true"
-    Name          = "nomad-server-${count.index}"
+    Name          = "nomad-server-${count.index + 1}"
     ManagedBy     = "Terraform"
   }
 }
