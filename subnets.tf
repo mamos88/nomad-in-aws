@@ -1,5 +1,5 @@
 resource "aws_subnet" "nomad-lab-pub" {
-  count                   = 3
+  count                   = 5
   vpc_id                  = aws_vpc.nomad-lab-vpc.id
   cidr_block              = "10.0.${count.index}.0/24"
   map_public_ip_on_launch = "true"
