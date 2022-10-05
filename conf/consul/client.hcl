@@ -1,7 +1,6 @@
 data_dir = "/var/consul/server"
 
 server           = false
-bootstrap_expect = 1
 advertise_addr   = "{{ GetInterfaceIP `eth0` }}"
 client_addr      = "0.0.0.0"
 ui               = false
