@@ -1,17 +1,19 @@
-# resource "aws_instance" "nomad-client-node" {
-#   count                       = var.nomad_client_count
-#   ami                         = var.nomad_node_ami_id
-#   instance_type               = var.nomad_node_instance_size
-#   key_name                    = var.aws_key_name
-#   subnet_id                   = aws_subnet.nomad-lab-pub[count.index].id
-#   vpc_security_group_ids      = [aws_security_group.nomad-sg.id]
-#   associate_public_ip_address = true
-#   user_data                   = file("conf/install-client.sh")
-#   private_ip                  = "10.0.${count.index}.200"
+resource "aws_launch_configuration" "NomadClientLC" {
+  name          = "NomadClientLC"
+  image_id      = "ami-0067e1d862d28908e"
+  instance_type = "t2.micro"
+  key_name = "var.aws_key_name"
+  security_groups = [aws_security_group.nomad-sg.id]
+}
 
-#   tags = {
-#     Terraform     = "true"
-#     Name          = "nomad-client-${count.index + 1}"
-#     ManagedBy     = "Terraform"
-#   }
-# }
+resource "aws_autoscaling_group" "NomadClientASG" {
+  name                      = "NomadClientASG"
+  max_size                  = 3
+  min_size                  = 3
+  health_check_grace_period = 300
+  health_check_type         = "EC2"
+  desired_capacity          = 3
+  force_delete              = false
+  launch_configuration      = aws_launch_configuration.NomadClientLC.name
+#   vpc_zone_identifier       = [aws_subnet.example1.id, aws_subnet.example2.id]
+  availability_zones = [aws_subnet.nomad-lab-pub.id]

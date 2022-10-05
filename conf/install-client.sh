@@ -90,7 +90,7 @@ retval=$?
 if [ $retval -eq 0 ]; then
   sudo killall consul
 fi
-sudo nohup consul agent --config-file /etc/consul.d/client.hcl >$HOME/consul.log &
+#sudo nohup consul agent --config-file /etc/consul.d/client.hcl >$HOME/consul.log &
 
 # Form Nomad Cluster
 ps -C nomad
@@ -105,14 +105,14 @@ sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/master/conf/nom
 sudo cp /tmp/nomad/nomad.service /etc/systemd/system/nomad.service
 sudo systemctl enable nomad
 
-sudo systemctl start nomad
+# sudo systemctl start nomad
 
 # Configure Consul Autostart
 sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/master/conf/consul/consul-client.service -o /tmp/consul/consul.service
 sudo cp /tmp/consul/consul.service /etc/systemd/system/consul.service
 sudo systemctl enable consul
 
-sudo systemctl start consul
+# sudo systemctl start consul
 
 # Configure Docker Autostart
 sudo systemctl enable docker
