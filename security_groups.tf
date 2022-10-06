@@ -143,6 +143,13 @@ resource "aws_security_group" "nomad-sg" {
     cidr_blocks = var.allowed_ip_network
   }
 
+  ingress {
+    from_port   = 0
+    to_port     = 65535
+    protocol    = "tcp"
+    cidr_blocks = [aws_security_group.nomad_sg.id]
+  }
+
   tags = {
     Terraform  = "true"
   }
