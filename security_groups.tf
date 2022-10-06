@@ -147,7 +147,7 @@ resource "aws_security_group" "nomad-sg" {
     from_port   = 0
     to_port     = 65535
     protocol    = "tcp"
-    cidr_blocks = [aws_security_group.nomad_sg.id]
+    cidr_blocks = ["10.0.0.0/16"]
   }
 
   tags = {
