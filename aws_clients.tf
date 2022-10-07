@@ -1,5 +1,5 @@
 resource "aws_instance" "amazon-client-nodes" {
-    count = 3
+    count = 0
     ami = "ami-0067e1d862d28908e"
     instance_type = var.nomad_node_instance_size
     key_name = var.aws_key_name
