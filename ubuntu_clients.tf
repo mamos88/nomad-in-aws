@@ -1,4 +1,4 @@
-resource "aws_instance" "amazon-client-nodes" {
+resource "aws_instance" "ubuntu-18.04-client-nodes" {
     count = 3
     ami = "ami-0cfcb52f9327f7093"
     instance_type = var.nomad_node_instance_size
