@@ -1,6 +1,6 @@
 resource "aws_instance" "amazon-client-nodes" {
     count = 3
-    ami = "ami-0067e1d862d28908e"
+    ami = "ami-0cfcb52f9327f7093"
     instance_type = var.nomad_node_instance_size
     key_name = var.aws_key_name
     subnet_id = aws_subnet.nomad-lab-pub[count.index].id
@@ -9,7 +9,7 @@ resource "aws_instance" "amazon-client-nodes" {
 
     tags = {
         Terraform     = "true"
-        Name          = "nomad-client-amazon-${count.index + 1}"
+        Name          = "nomad-client-ubuntu18.04-${count.index + 1}"
         ManagedBy     = "Terraform"
   }
 }
