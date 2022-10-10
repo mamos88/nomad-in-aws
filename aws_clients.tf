@@ -1,6 +1,7 @@
 resource "aws_instance" "amazon-client-nodes" {
-    count = 0
-    ami = "ami-0067e1d862d28908e"
+    count = 3
+    # ami = "ami-0067e1d862d28908e"
+    ami = "ami-0c38a16bfbae33568" # Rocky Linux
     instance_type = var.nomad_node_instance_size
     key_name = var.aws_key_name
     subnet_id = aws_subnet.nomad-lab-pub[count.index].id
