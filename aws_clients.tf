@@ -1,5 +1,5 @@
 resource "aws_instance" "amazon-client-nodes" {
-    count = 4
+    count = 3
     ami = "ami-0067e1d862d28908e"
     # ami = "ami-0f756fcce08b197a3" # Alma Linux
     instance_type = var.nomad_node_instance_size
