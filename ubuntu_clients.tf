@@ -1,5 +1,5 @@
 resource "aws_instance" "ubuntu-1804-client-nodes" {
-    count = 3
+    count = 0
     ami = "ami-0cfcb52f9327f7093"
     instance_type = var.nomad_node_instance_size
     key_name = var.aws_key_name
