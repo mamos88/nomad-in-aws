@@ -29,7 +29,7 @@ variable "nomad_node_instance_size" {
   type        = string
   # default     = "t2.small"
   # default     = "t2.micro"
-  default = "t2.medium"
+  default = "t2.large"
 }
 
 variable "nomad_node_ami_id" {
