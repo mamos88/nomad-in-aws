@@ -3,7 +3,7 @@ resource "aws_lb" "test" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.nomad-sg.id]
-  subnets            = [aws_subnet.nomad-lab-pub.id]
+  subnets            = [aws_subnet.nomad-lab-pub.*.id]
 
   enable_deletion_protection = true
 
