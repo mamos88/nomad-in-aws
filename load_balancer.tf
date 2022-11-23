@@ -33,6 +33,9 @@ resource "aws_alb_listener" "alb_listener" {
     target_group_arn = "${aws_alb_target_group.alb_target_group.arn}"
     type             = "forward"  
   }
+  depends_on = [
+    aws_vpc.nomad-lab-vpc
+  ]
 }
 
 
