@@ -15,13 +15,16 @@ resource "aws_lb" "alb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.nomad-sg.id]
-  subnets            = [for subnet in aws_subnet.nomad-lab-vpc : subnet.id]
+  subnets            = [for subnet in aws_subnet.nomad-lab-pub : subnet.id]
 
   enable_deletion_protection = true
 
   tags = {
     Environment = "production"
   }
+  depends_on = [
+    aws_subnet.nomad-lab-pub
+  ]
 }
 
 resource "aws_alb_listener" "alb_listener" {  
