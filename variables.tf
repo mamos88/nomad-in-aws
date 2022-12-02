@@ -72,3 +72,16 @@ variable "az_map" {
     2 = "c"
   }
 }
+
+# Load Balancer Variables
+variable "health_check" {
+   type = map(string)
+   default = {
+      "timeout"  = "10"
+      "interval" = "20"
+      "path"     = "/"
+      "port"     = "8080"
+      "unhealthy_threshold" = "2"
+      "healthy_threshold" = "3"
+    }
+}
