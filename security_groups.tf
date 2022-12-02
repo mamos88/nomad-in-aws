@@ -51,6 +51,16 @@ resource "aws_security_group" "nomad-sg" {
     cidr_blocks = var.allowed_ip_network
   }
 
+  # This is needed for haproxy based on the port I chose
+  ingress {
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = var.allowed_ip_network
+  }
+
+
+
   ingress {
     from_port   = 8300
     to_port     = 8300
