@@ -1,11 +1,11 @@
-variable "aws_access_key" {
-  description = "Access key for AWS account"
-}
+# variable "aws_access_key" {
+#   description = "Access key for AWS account"
+# }
 
-variable "aws_secret_key" {
-  description = "Secret for AWS account"
-  type        = string
-}
+# variable "aws_secret_key" {
+#   description = "Secret for AWS account"
+#   type        = string
+# }
 
 variable "aws_region" {
   description = "The region name to deploy into"
@@ -13,10 +13,10 @@ variable "aws_region" {
   default     = "us-east-2"
 }
 
-variable "aws_key_fingerprint" {
-  description = "Fingerprint of your SSH key"
-  type        = string
-}
+# variable "aws_key_fingerprint" {
+#   description = "Fingerprint of your SSH key"
+#   type        = string
+# }
 
 variable "aws_key_name" {
   description = "SSH key name"
@@ -28,8 +28,8 @@ variable "nomad_node_instance_size" {
   description = "EC2 instance type/size for Nomad nodes"
   type        = string
   # default     = "t2.small"
-  # default     = "t2.micro"
-  default = "t2.large"
+  default     = "t2.micro"
+  # default = "t2.large"
 }
 
 variable "nomad_node_ami_id" {

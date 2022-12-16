@@ -59,8 +59,6 @@ resource "aws_security_group" "nomad-sg" {
     cidr_blocks = var.allowed_ip_network
   }
 
-
-
   ingress {
     from_port   = 8300
     to_port     = 8300

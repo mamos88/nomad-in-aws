@@ -5,7 +5,7 @@ resource "aws_lb" "test" {
   security_groups    = [aws_security_group.nomad-sg.id]
   subnets            = flatten(["${aws_subnet.nomad-lab-pub.*.id}"])
 
-  enable_deletion_protection = true
+  enable_deletion_protection = false
 
 #   access_logs {
 #     bucket  = "${aws_s3_bucket.lb_logs.bucket}"
