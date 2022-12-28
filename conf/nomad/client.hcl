@@ -19,7 +19,7 @@ plugin "raw_exec" {
 client {
   enabled           = true
   network_interface = "eth0"
-  servers           = ["10.0.0.100", "10.0.1.100", "10.0.2.100", "10.0.0.82", "10.0.0.10", "10.0.0.94"]
+  servers           = ["10.0.0.82", "10.0.0.10", "10.0.0.94"]
 }
 
 
