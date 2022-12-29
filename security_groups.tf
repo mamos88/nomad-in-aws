@@ -143,10 +143,10 @@ resource "aws_security_group" "nomad-sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # Fabio
+  # # Prometheus
   ingress {
-    from_port   = 9998
-    to_port     = 9999
+    from_port   = 9090
+    to_port     = 9090
     protocol    = "tcp"
     cidr_blocks = var.allowed_ip_network
   }
