@@ -1,3 +1,5 @@
+
+
 resource "aws_instance" "nomad-server-node" {
   count                       = var.nomad_server_count
   ami                         = var.nomad_node_ami_id

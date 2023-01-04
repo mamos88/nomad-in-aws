@@ -17,3 +17,4 @@ output "nomad_url" {
 output "ec2_nodes" {
   value = aws_instance.nomad-server-node[*].public_dns
 }
+

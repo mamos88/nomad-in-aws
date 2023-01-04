@@ -35,7 +35,8 @@ resource "aws_lb_target_group" "test" {
   name     = "tf-example-lb-tg"
   port     = 8080
   protocol = "HTTP"
-  vpc_id   = "${aws_vpc.nomad-lab-vpc.id}"
+  # vpc_id   = "${aws_vpc.nomad-lab-vpc.id}"
+  vpc_id   = data.aws_vpc.vpc.id
   health_check {
     healthy_threshold = var.health_check["healthy_threshold"]
     interval = var.health_check["interval"]

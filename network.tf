@@ -1,5 +1,5 @@
 resource "aws_internet_gateway" "nomad-lab-igw" {
-  vpc_id = aws_vpc.nomad-lab-vpc.id
+  vpc_id = data.aws_vpc.vpc.id
 
   tags = {
     Name      = "nomad-on-aws"
@@ -8,7 +8,7 @@ resource "aws_internet_gateway" "nomad-lab-igw" {
 }
 
 resource "aws_route_table" "nomad-lab-public-crt" {
-  vpc_id = aws_vpc.nomad-lab-vpc.id
+  vpc_id = data.aws_vpc.vpc.id
 
   route {
     cidr_block = "0.0.0.0/0"
