@@ -24,7 +24,8 @@ resource "aws_route_table" "nomad-lab-public-crt" {
 resource "aws_route_table_association" "subnet_association" {
   count = 3
 
-  subnet_id      = aws_subnet.nomad-lab-pub[count.index].id
+  subnet_id      = data.aws_subnet.nomad-lab-pub[count.index].id
+  # subnet_id      = aws_subnet.nomad-lab-pub[count.index].id
   route_table_id = aws_route_table.nomad-lab-public-crt.id
 
   lifecycle {
@@ -32,7 +33,7 @@ resource "aws_route_table_association" "subnet_association" {
   }
 
   depends_on = [
-    aws_subnet.nomad-lab-pub,
+    # aws_subnet.nomad-lab-pub,
     aws_route_table.nomad-lab-public-crt,
   ]
 }

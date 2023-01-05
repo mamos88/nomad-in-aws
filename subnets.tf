@@ -1,11 +1,22 @@
 locals {
-  vpc_name = "nomad-lab"
+  subnet_name = "nomad-lab"
 }
 
-data "aws_vpc" "vpc" {
+# data "aws_subnet" "nomad-lab-pub" {
+#   filter {
+#     name = "tag:Name"
+#     values = [local.subnet_name]
+#   }
+# }
+
+data "aws_subnet" "nomad-lab-pub" {
+  # vpc_id = "vpc-0efcce26479a6e53a"
   filter {
-    name = "tag:Name"
-    values = [local.vpc_name]
+    name = "id"
+    values = [
+    "subnet-06e7824f4aa19c854", 
+    "subnet-08287822bdca109a0",
+    ]
   }
 }
 

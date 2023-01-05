@@ -3,7 +3,8 @@ resource "aws_lb" "test" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.nomad-sg.id]
-  subnets            = flatten(["${aws_subnet.nomad-lab-pub.*.id}"])
+  subnets            = flatten(["${data.aws_subnet.nomad-lab-pub.*.id}"])
+  # subnets            = flatten(["${aws_subnet.nomad-lab-pub.*.id}"])
 
   enable_deletion_protection = false
 
