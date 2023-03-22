@@ -66,6 +66,21 @@ resource "aws_security_group" "nomad-sg" {
     cidr_blocks = var.allowed_ip_network
   }
 
+ # Vault Ports
+  ingress {
+    from_port   = 8200
+    to_port     = 8200
+    protocol    = "tcp"
+    cidr_blocks = var.allowed_ip_network
+  }
+
+  ingress {
+    from_port   = 8201
+    to_port     = 8201
+    protocol    = "tcp"
+    cidr_blocks = var.allowed_ip_network
+  }
+
   ingress {
     from_port   = 8301
     to_port     = 8301
