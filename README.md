@@ -1,6 +1,10 @@
 # HashiCorp Nomad/Consul Sandbox Creation Code
 This repository was created to help individuals that want to quickly and easily provision a HashiCorp Nomad/Consul environment in AWS.  
 
+# Disclaimer
+1. If you chose to build an environment in AWS using this code there will be resources provisioned that will cost you $$. Review the resources that will be provisioned prior to the installation.
+2. This repository should not be used to build your production environment and you should familiarize yourself with the proper security settings for running Nomad/Consul and Docker in AWS.  
+
 # Pre-deployment Requirements
 1. You have an AWS account created
 2. You have HashiCorp Terraform, HashiCorp Packer, git and AWS CLI installed on your local machine
@@ -30,5 +34,8 @@ This repository was created to help individuals that want to quickly and easily 
 2. It is recommended to build the server AMI first.  There are a few variables in the file that you should update and include:
    * ami_name
    * region
-3. At run time, you need to pass in the profile (which is test-profile based on the instructions above) and server_source_ami variables.  The server_source_ami would be the latest Amazon Linux AMI id in the region you will be deploying the environment.
-4. 
+3. At run time, you need to pass in the profile (which is *test-profile* based on the instructions above) and server_source_ami variables.  The server_source_ami would be the latest Amazon Linux AMI id in the region you will be deploying the environment.
+4. Obtain the latest Amazon Linux AMI id from the region you want to deploy the image. The AMI id will be used in the next step.
+5. On your local machine  navigate your terminal to the packer\server folder and run **packer build -var "profile=security-test" -var "server_source_ami=ami-08333bccc35d71140"**
+   *NOTE: the server_source_ami value will most likely be different than in the example above since you would have obtained it yourself and it will be based on the region you select as well as if the source AMI has been updated since these instructions were written. *
+6. If Packer is installed, the AWS CLI is installed and the AWS profile is set up as per the instructions above, Packer should connect to AWS, provision an EC2 instance, run the nomad-install-amazon-linux.sh file also found in the server folder and eventually build an AMI.  
