@@ -18,6 +18,11 @@ variable "aws_region" {
 #   type        = string
 # }
 
+variable "client_instance_type" {
+  description = "Nomad Client Instance Type"
+  default = "t2.large"
+}
+
 variable "aws_key_name" {
   description = "SSH key name"
   type        = string
@@ -35,7 +40,8 @@ variable "nomad_node_instance_size" {
 variable "nomad_node_ami_id" {
   description = "AMI ID to use for Nomad nodes"
   type        = string
-  default     = "ami-064ff912f78e3e561" # Amazon Linux
+  #default     = "ami-064ff912f78e3e561" # Amazon Linux
+  default = "ami-080930e27c1c17c5c" # Testing AMI
   # default     = "ami-00978328f54e31526" # Ubuntu Linux
 }
 

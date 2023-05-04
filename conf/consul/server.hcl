@@ -20,7 +20,7 @@ connect = {
 }
 
 acl = {
-  enabled = false
+  enabled = true
   default_policy = "allow"
   enable_token_persistence = true
 }
