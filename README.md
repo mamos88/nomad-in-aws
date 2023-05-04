@@ -14,8 +14,8 @@ This repository was created to help individuals that want to quickly and easily 
 # Deployment Steps High Level Summary
 
 ## Configure AWS access key / secret key profile on local machine 
-*(Requires AWS CLI client to be installed before step 1)*
-1. On your local machine run *aws configure --profile test-profile*
+*(Requires AWS CLI client to be installed before step 1 - See Pre-deployment Installation)*
+1. On your local machine run **aws configure --profile test-profile**
 2. It will ask you for the access key, secret key, default region, etc.
 3. Once this is completed the test-profile profile will be used
 
