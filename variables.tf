@@ -69,26 +69,26 @@ variable "allowed_ip_network" {
 variable "nomad_server_ami_id" {
   description = "AMI ID to use for Nomad server nodes"
   type        = string
-  default = "ami-080930e27c1c17c5c"
+  default = "ami-05536dc705297b831"
 }
 
 variable "nomad_client_amazon_ami_id" {
   description = "AMI ID to use for Nomad server nodes"
   type        = string
-  default = "ami-0fd39d4310191a123"
+  default = "ami-0d33d178a0d02d075"
 }
 
 variable "nomad_client_ubuntu_ami_id" {
   description = "AMI ID to use for Nomad server nodes"
   type        = string
-  default = "ami-0f68834c4ad48c7a1"
+  default = "ami-05050ce70d6f97db3"
 }
 
 # This is your keypair name for connecting to the instance.  Change it to a valid keypair in our account/region.
 variable "aws_key_name" {
   description = "SSH key name"
   type        = string
-  default     = "Ohio-Mar2022-Keypair"
+  default     = "test1-keypair"
 }
 
 variable "profile" {
