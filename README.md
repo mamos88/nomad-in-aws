@@ -27,4 +27,8 @@ This repository was created to help individuals that want to quickly and easily 
 
 ## Amazon Machine Image Creation (AMI) Using Packer
 1. The packer folder contains two sub folders; server and client folders
-2. You will need to update
+2. It is recommended to build the server AMI first.  There are a few variables in the file that you should update and include:
+   * ami_name
+   * region
+3. At run time, you need to pass in the profile (which is test-profile based on the instructions above) and server_source_ami variables.  The server_source_ami would be the latest Amazon Linux AMI id in the region you will be deploying the environment.
+4. 
