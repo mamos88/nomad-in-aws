@@ -1,54 +1,18 @@
-# variable "aws_access_key" {
-#   description = "Access key for AWS account"
-# }
-
-# variable "aws_secret_key" {
-#   description = "Secret for AWS account"
-#   type        = string
-# }
-
 variable "aws_region" {
   description = "The region name to deploy into"
   type        = string
   default     = "us-east-2"
 }
 
-# variable "aws_key_fingerprint" {
-#   description = "Fingerprint of your SSH key"
-#   type        = string
-# }
-
 variable "client_instance_type" {
   description = "Nomad Client Instance Type"
-  default = "t2.large"
+  default = "t2.medium"
 }
 
-variable "aws_key_name" {
-  description = "SSH key name"
-  type        = string
-  default     = "Ohio-Mar2022-Keypair"
-}
-
-variable "nomad_node_instance_size" {
+variable "nomad_server_instance_type" {
   description = "EC2 instance type/size for Nomad nodes"
   type        = string
-  # default     = "t2.small"
   default     = "t2.micro"
-  # default = "t2.large"
-}
-
-variable "nomad_node_ami_id" {
-  description = "AMI ID to use for Nomad nodes"
-  type        = string
-  #default     = "ami-064ff912f78e3e561" # Amazon Linux
-  default = "ami-080930e27c1c17c5c" # Testing AMI
-  # default     = "ami-00978328f54e31526" # Ubuntu Linux
-}
-
-variable "nomad_node_count" {
-  description = "The number of server nodes (should be 3 or 5)"
-  type        = number
-  default     = 3
 }
 
 variable "nomad_client_count" {
@@ -57,16 +21,16 @@ variable "nomad_client_count" {
   default     = 3
 }
 
-variable "nomad_server_count" {
-  description = "The number of server nodes (should be 3 or 5)"
+variable "subnet_count" {
+  description = "The number of desired subnets"
   type        = number
   default     = 3
 }
 
-variable "allowed_ip_network" {
-  description = "Networks allowed in security group for ingress rules"
-  type        = list(any)
-  default     = ["174.26.226.144/32", "10.0.0.0/16"]
+variable "nomad_server_count" {
+  description = "The number of server nodes (should be 3 or 5)"
+  type        = number
+  default     = 3
 }
 
 variable "az_map" {
@@ -90,4 +54,44 @@ variable "health_check" {
       "unhealthy_threshold" = "2"
       "healthy_threshold" = "3"
     }
+}
+
+# These are variables you need to change before run time
+# --------------------------------------------------------
+# Change the first element in the list to your IP address
+variable "allowed_ip_network" {
+  description = "Networks allowed in security group for ingress rules"
+  type        = list(any)
+  default     = ["174.26.226.144/32", "10.0.0.0/16"]
+}
+
+# This is the AMI for the Server node.  Change it to match the one generated with Packer server AMI build
+variable "nomad_server_ami_id" {
+  description = "AMI ID to use for Nomad server nodes"
+  type        = string
+  default = "ami-080930e27c1c17c5c"
+}
+
+variable "nomad_client_amazon_ami_id" {
+  description = "AMI ID to use for Nomad server nodes"
+  type        = string
+  default = "ami-0fd39d4310191a123"
+}
+
+variable "nomad_client_ubuntu_ami_id" {
+  description = "AMI ID to use for Nomad server nodes"
+  type        = string
+  default = "ami-0f68834c4ad48c7a1"
+}
+
+# This is your keypair name for connecting to the instance.  Change it to a valid keypair in our account/region.
+variable "aws_key_name" {
+  description = "SSH key name"
+  type        = string
+  default     = "Ohio-Mar2022-Keypair"
+}
+
+variable "profile" {
+  description = "This is your AWS profile"
+  type = string
 }

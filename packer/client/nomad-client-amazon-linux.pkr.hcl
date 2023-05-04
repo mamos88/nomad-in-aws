@@ -3,6 +3,10 @@ variable "amazon_linux_ami_name" {
   default = "nomad-client-1.5.3-amazon-linux"
 }
 
+variable "profile" {
+  type = string
+}
+
 variable "ubuntu_linux_ami_name" {
   type = string
   default = "nomad-client-1.5.3-ubuntu-linux"
@@ -10,6 +14,7 @@ variable "ubuntu_linux_ami_name" {
 
 source "amazon-ebs" "amazon-linux" {
   ami_name      = var.amazon_linux_ami_name
+  profile = var.profile
   instance_type = "t2.micro"
   region        = "us-east-2"
   source_ami    = "ami-06d5c50c30a35fb88"
@@ -22,6 +27,7 @@ source "amazon-ebs" "amazon-linux" {
 
 source "amazon-ebs" "ubuntu-linux" {
   ami_name      = var.ubuntu_linux_ami_name
+  profile = var.profile
   instance_type = "t2.micro"
   region        = "us-east-2"
   source_ami    = "ami-06c4532923d4ba1ec"

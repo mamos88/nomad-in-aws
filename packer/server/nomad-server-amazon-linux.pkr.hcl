@@ -3,8 +3,13 @@ variable "ami_name" {
   default = "nomad-server-1.5.3-amazon-linux"
 }
 
+variable "profile" {
+  type = string
+}
+
 source "amazon-ebs" "amazon-linux" {
   ami_name      = var.ami_name
+  profile = var.profile
   instance_type = "t2.micro"
   region        = "us-east-2"
   source_ami    = "ami-06d5c50c30a35fb88"
