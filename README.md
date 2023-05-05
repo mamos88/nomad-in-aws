@@ -39,6 +39,8 @@ This repository was created to help individuals that want to quickly and easily 
 5. You should check for the latest version of Nomad and Consul and update the nomad-server-amazon-linux.sh file with the latest version.  At the time of this writing the latest version of Nomad is 1.5.3.  Update the line with NOMAD_VERSION=1.5.3 to the desired version. Do the same for Consul, i.e., CONSUL_VERSION=1.15.2 to the desired version.
 6. On your local machine  navigate your terminal to the packer\server folder and run **packer build -var "profile=security-test" -var "server_source_ami=ami-08333bccc35d71140" .**
    *NOTE: the server_source_ami value will most likely be different than in the example above since you would have obtained it yourself and it will be based on the region you select as well as if the source AMI has been updated since these instructions were written.*
+   **Also, there is a period . at the end of the packer build command above, make sure you include that in the execution or you will observe and error**
+   
 7. If Packer is installed, the AWS CLI is installed and the AWS profile is set up as per the instructions above, Packer should connect to AWS, provision an EC2 instance, run the nomad-install-amazon-linux.sh file also found in the server folder and eventually build an AMI.  
 
 ## Creating the Nomad/Consul Client Amazon Machine Image (AMI) Using Packer
