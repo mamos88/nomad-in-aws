@@ -54,4 +54,25 @@ This repository was created to help individuals that want to quickly and easily 
 4. If everything is successful, you will have three AMI's successfully created that when started by Terraform will run a fully functional Nomad/Consul environment with 3 server nodes and two client nodes.
 
 ## Deploying the Nomad/Consul Environment using Terraform
+If you have gotten to this point you successfully created your AMI's in AWS and at this point you are ready to deploy the infrastructure/resources using Terraform. 
 
+## Required variables.tf updates prior to deployment
+There are a few updates you need to make to the Terraform code for it to be deployed for your use.  Most of the changes are to the variables.tf file and are found in the section *These are variables you need to change before run time*
+
+The variables in the variables.tf have comments next to the lines you need to update. 
+
+## Optional updates to auto_scaling_group.tf
+The auto_scaling_group.tf creates two auto scaling groups, one for the Amazon linux client and the other for the Ubuntu linux client.  There are two secions with max_size = 1 and min_size = 1.  You can increase this or leave it alone. If left alone, the code will configure each auto scaling group with a single node.
+**NOTE: if you decide to change the number of instances to a higher value, your cost will increase.**
+
+## Optional updates to security_groups.tf
+The security_groups.tf has many test ports that I have used over time in my testing.  You can reduce the ports down to the bare minimum by commenting out or removing un-necessary sections.  The required ports for Nomad and Consul can be found the addresses below.
+**Nomad Ports:** https://developer.hashicorp.com/nomad/docs/install/production/requirements#ports-used
+**Consul Ports:** https://developer.hashicorp.com/consul/docs/install/ports
+
+# Running Terraform
+
+
+
+
+ 
