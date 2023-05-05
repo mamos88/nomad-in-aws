@@ -23,7 +23,7 @@ This repository was created to help individuals that want to quickly and easily 
 *(Requires AWS CLI client to be installed before step 1 - See Pre-deployment Installation)*
 1. On your local machine run **aws configure --profile test-profile**
 2. It will ask you for the access key, secret key, default region, etc.  You should have this information from step 3 in the Pre-deployment Requirements. 
-3. Once this is completed the test-profile profile will be used
+3. Once this is completed the test-profile profile will be configured
 
 ## Clone this repository
 1. On your local machine run **git clone https://github.com/mamos88/nomad-in-aws.git**
@@ -37,7 +37,7 @@ This repository was created to help individuals that want to quickly and easily 
 3. At run time, you need to pass in the profile (which is *test-profile* based on the instructions above) and server_source_ami variables.  The server_source_ami would be the latest Amazon Linux AMI id in the region you will be deploying the environment.
 4. Obtain the latest Amazon Linux AMI id from the region you want to deploy the image. The AMI id will be used in the next step.
 5. You should check for the latest version of Nomad and Consul and update the nomad-server-amazon-linux.sh file with the latest version.  At the time of this writing the latest version of Nomad is 1.5.3.  Update the line with NOMAD_VERSION=1.5.3 to the desired version. Do the same for Consul, i.e., CONSUL_VERSION=1.15.2 to the desired version.
-6. On your local machine  navigate your terminal to the packer\server folder and run **packer build -var "profile=security-test" -var "server_source_ami=ami-08333bccc35d71140"**
+6. On your local machine  navigate your terminal to the packer\server folder and run **packer build -var "profile=security-test" -var "server_source_ami=ami-08333bccc35d71140" .**
    *NOTE: the server_source_ami value will most likely be different than in the example above since you would have obtained it yourself and it will be based on the region you select as well as if the source AMI has been updated since these instructions were written.*
 7. If Packer is installed, the AWS CLI is installed and the AWS profile is set up as per the instructions above, Packer should connect to AWS, provision an EC2 instance, run the nomad-install-amazon-linux.sh file also found in the server folder and eventually build an AMI.  
 
