@@ -70,9 +70,18 @@ The security_groups.tf has many test ports that I have used over time in my test
 **Nomad Ports:** https://developer.hashicorp.com/nomad/docs/install/production/requirements#ports-used
 **Consul Ports:** https://developer.hashicorp.com/consul/docs/install/ports
 
-# Running Terraform
+# Deploying the infrastructure with Terraform
+If you are not familiar with the required steps to deploy resources with Terraform you can find information here https://developer.hashicorp.com/terraform/tutorials/cli/plan.  
 
+The following steps should be performed:
+1. run *terraform init* in the same directory where the main.tf is located.  
+2. run *terraform plan* 
+    You will prompt you for the profile you created in the *Configure AWS access key* section.  In this example, it is test-profile.  The terraform plan will show you the resources that will be provisioned if applied.
+3. If your are satisfied with the plan the next step is to run *terraform apply*.  If all goes well, it will provision the infrastructure.  The consul url and nomad url will be accessible.  
 
+**NOTE: Dont forget to run a terraform destroy when you are done or your will accumulate expenses**
+
+Good luck!!
 
 
  
