@@ -20,6 +20,10 @@ client {
   enabled           = true
   network_interface = "eth0"
   servers           = ["10.0.0.100", "10.0.1.100", "10.0.2.100"]
+  host_volume "mysql" {
+  path = "/var/lib/mysql"
+  read_only = false
+}
 }
 
 
