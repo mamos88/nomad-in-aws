@@ -18,6 +18,7 @@ variable "amazon_source_ami" {
 
 variable "ubuntu_source_ami" {
   type = string
+  default = "ami-06c4532923d4ba1ec"
 }
 
 variable "region" {
