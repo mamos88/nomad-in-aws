@@ -148,3 +148,5 @@ host_volume "*" {
 }
 EOF
 
+# Test MySQL Nomad Job Steps
+mkdir -p /var/lib/mysql

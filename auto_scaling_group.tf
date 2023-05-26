@@ -21,8 +21,8 @@ resource "aws_autoscaling_group" "NomadAmazonLinuxClientASG" {
 
 resource "aws_autoscaling_group" "UbuntuLinuxClientASG" {
     name = "UbuntuLinuxClientASG"
-    max_size = 1
-    min_size = 1
+    max_size = 0
+    min_size = 0
 
     vpc_zone_identifier = [for subnet in aws_subnet.nomad-lab-pub: subnet.id]
     
