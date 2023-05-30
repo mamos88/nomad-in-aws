@@ -15,9 +15,9 @@ datacenter = "dc-aws-1"
 region = "region-aws-1"
 
 advertise {
-  http = "{{ GetInterfaceIP `eth0` }}"
-  rpc  = "{{ GetInterfaceIP `eth0` }}"
-  serf = "{{ GetInterfaceIP `eth0` }}"
+  http = "{{ GetInterfaceIP `enX0` }}"
+  rpc  = "{{ GetInterfaceIP `enX0` }}"
+  serf = "{{ GetInterfaceIP `enX0` }}"
 }
 
 plugin "raw_exec" {
@@ -28,7 +28,7 @@ plugin "raw_exec" {
 
 // client {
 //   enabled           = true
-//   network_interface = "eth0"
+//   network_interface = "enX0"
 //   servers           = ["10.0.0.100", "10.0.1.100", "10.0.2.100"]
 
 //   host_volume "certs" {
