@@ -1,11 +1,11 @@
 variable "amazon_linux_ami_name" {
   type    = string
-  default = "nomad-client-amazon-linux"
+  default = "nomad-client-amazon-linux-1.5.6"
 }
 
 variable "ubuntu_linux_ami_name" {
   type = string
-  default = "nomad-client-ubuntu-linux"
+  default = "nomad-client-ubuntu-linux-1.5.6"
 }
 
 variable "profile" {
@@ -18,6 +18,7 @@ variable "amazon_source_ami" {
 
 variable "ubuntu_source_ami" {
   type = string
+  default = "ami-06c4532923d4ba1ec"
 }
 
 variable "region" {
@@ -35,7 +36,7 @@ source "amazon-ebs" "amazon-linux" {
   ssh_username  = "ec2-user"
 
   tags = {
-    Name = "Nomad-Client-amazon-linux"
+    Name = "Nomad-Client-1.5.6-amazon-linux"
   }
 }
 
@@ -48,7 +49,7 @@ source "amazon-ebs" "ubuntu-linux" {
   ssh_username  = "ubuntu"
 
   tags = {
-    Name = "Nomad-Client-1.5.3-ubuntu-linux"
+    Name = "Nomad-Client-1.5.6-ubuntu-linux"
   }
 }
 
