@@ -10,9 +10,8 @@ resource "aws_launch_template" "NomadAmazonLinuxClientLC" {
         #!/bin/bash
         echo "Mounting EFS file system"
         yum install -y amazon-efs-utils
-        mkdir /mnt/mysql
-        mount -t efs ${aws_efs_file_system.mysql.id}:/ /mnt/mysql
-        echo "${aws_efs_file_system.mysql.id}:/ /mnt/mysql efs defaults,_netdev 0 0" >> /etc/fstab
+        mount -t efs ${aws_efs_file_system.mysql.id}:/ /var/lib/mysql
+        echo "${aws_efs_file_system.mysql.id}:/ /var/lib/mysql efs defaults,_netdev 0 0" >> /etc/fstab
         EOF
      )
 }

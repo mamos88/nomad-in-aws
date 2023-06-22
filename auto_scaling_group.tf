@@ -1,4 +1,5 @@
 resource "aws_autoscaling_group" "NomadAmazonLinuxClientASG" {
+    depends_on = [ aws_efs_file_system.mysql, aws_efs_mount_target.mysql_mount_target ]
     name = "NomadAmazonLinuxClientASG"
     max_size = 1
     min_size = 1

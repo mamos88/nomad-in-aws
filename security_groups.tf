@@ -179,6 +179,13 @@ resource "aws_security_group" "nomad-sg" {
     protocol    = "tcp"
     cidr_blocks = var.allowed_ip_network
   }
+  # Grafana
+  ingress {
+    from_port   = 3000
+    to_port     = 3000
+    protocol    = "tcp"
+    cidr_blocks = var.allowed_ip_network
+  }
 
   ingress {
     from_port   = 0
