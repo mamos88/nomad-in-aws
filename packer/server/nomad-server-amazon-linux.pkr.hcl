@@ -1,6 +1,6 @@
 variable "ami_name" {
   type    = string
-  default = "nomad-server-amazon-linux-1.5.6"
+  default = "nomad-server-amazon-linux-1.5.6-v3"
 }
 
 variable "profile" {
@@ -9,6 +9,7 @@ variable "profile" {
 
 variable "server_source_ami" {
   type = string
+  default = "ami-069d73f3235b535bd"
 }
 
 variable "region" {

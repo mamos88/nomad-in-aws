@@ -1,11 +1,11 @@
 variable "amazon_linux_ami_name" {
   type    = string
-  default = "nomad-client-amazon-linux-1.5.6"
+  default = "nomad-client-amazon-linux-1.5.6-v3"
 }
 
 variable "ubuntu_linux_ami_name" {
   type = string
-  default = "nomad-client-ubuntu-linux-1.5.6"
+  default = "nomad-client-ubuntu-linux-1.5.6-v3"
 }
 
 variable "profile" {
@@ -14,6 +14,7 @@ variable "profile" {
 
 variable "amazon_source_ami" {
   type = string
+  default = "ami-069d73f3235b535bd"
 }
 
 variable "ubuntu_source_ami" {

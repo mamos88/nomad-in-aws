@@ -23,8 +23,11 @@ sudo systemctl restart docker
 sudo yum install amazon-efs-utils -y
 
 # Set up volumes
-sudo mkdir /data /data/mysql /data/certs /data/prometheus /data/templates /mnt/mysql
+sudo mkdir /data /data/mysql /data/certs /data/prometheus /data/templates /mnt/mysql /var/lib/prometheus /var/lib/grafana /var/lib/mysql /var/lib/elk
 sudo chown root -R /data
+
+# Set up max_map_count for elk
+echo "vm.max_map_count=262144" >> /etc/sysctl.conf
 
 # Install Nomad
 NOMAD_VERSION=1.5.6
@@ -44,11 +47,11 @@ sudo chmod a+w /etc/nomad.d
 
 # Nomad config file copy
 sudo mkdir -p /tmp/nomad
-sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/master/conf/nomad/client.hcl -o /tmp/nomad/client.hcl
+sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/prod/conf/nomad/client.hcl -o /tmp/nomad/client.hcl
 sudo cp /tmp/nomad/client.hcl /etc/nomad.d/client.hcl
 
 # Install Consul
-CONSUL_VERSION=1.15.2
+CONSUL_VERSION=1.16.0
 
 sudo curl -sSL https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip > consul.zip
 if [ ! -d consul ]; then
@@ -66,7 +69,7 @@ sudo chmod a+w /etc/consul.d
 
 # Consul config file copy
 sudo mkdir -p /tmp/consul
-sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/master/conf/consul/client.hcl -o /tmp/consul/client.hcl
+sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/prod/conf/consul/client.hcl -o /tmp/consul/client.hcl
 sudo cp /tmp/consul/client.hcl /etc/consul.d/client.hcl
 
 

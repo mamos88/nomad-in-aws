@@ -27,7 +27,7 @@ sudo systemctl enable docker
 
 # Consul
 echo "Installing Consul"
-CONSUL_VERSION=1.15.2
+CONSUL_VERSION=1.16.0
 
 sudo curl -sSL https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip > consul.zip
 if [ ! -d consul ]; then

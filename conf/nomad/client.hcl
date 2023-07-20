@@ -24,6 +24,19 @@ client {
     path = "/var/lib/mysql"
     read_only = false
   }
+  host_volume "prometheus" {
+    path = "/var/lib/prometheus"
+    read_only = false
+  }
+  host_volume "grafana" {
+    path = "/var/lib/grafana"
+    read_only = false
+  }
+  host_volume "elk" {
+    path = "/var/lib/elk"
+    read_only = false
+  }
+
 }
 
 

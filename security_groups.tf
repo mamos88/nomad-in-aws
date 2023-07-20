@@ -187,6 +187,23 @@ resource "aws_security_group" "nomad-sg" {
     cidr_blocks = var.allowed_ip_network
   }
 
+# Elasticsearch
+  ingress {
+    from_port   = 9200
+    to_port     = 9200
+    protocol    = "tcp"
+    cidr_blocks = var.allowed_ip_network
+  }
+
+# Kibana
+  ingress {
+    from_port   = 5601
+    to_port     = 5601
+    protocol    = "tcp"
+    cidr_blocks = var.allowed_ip_network
+  }
+
+
   ingress {
     from_port   = 0
     to_port     = 65535
