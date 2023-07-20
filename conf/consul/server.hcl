@@ -2,7 +2,7 @@ data_dir = "/var/consul/server"
 
 server           = true
 bootstrap_expect = 3
-advertise_addr   = "{{ GetInterfaceIP `eth0` }}"
+advertise_addr   = "{{ GetInterfaceIP `enX0` }}"
 client_addr      = "0.0.0.0"
 # ui               = true
 datacenter       = "dc-aws-1"
