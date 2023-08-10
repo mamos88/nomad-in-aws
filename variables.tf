@@ -69,19 +69,19 @@ variable "allowed_ip_network" {
 variable "nomad_server_ami_id" {
   description = "AMI ID to use for Nomad server nodes"
   type        = string
-  default = "ami-05536dc705297b831" # Modify this with the server AMI you created
+  default = "ami-07e1523fd61279e28" # Modify this with the server AMI you created
 }
 
 variable "nomad_client_amazon_ami_id" {
   description = "AMI ID to use for Nomad server nodes"
   type        = string
-  default = "ami-0d33d178a0d02d075" # Modify this with the Amazon client AMI you created
+  default = "ami-0c0408c0144a15657" # Modify this with the Amazon client AMI you created
 }
 
 variable "nomad_client_ubuntu_ami_id" {
   description = "AMI ID to use for Nomad server nodes"
   type        = string
-  default = "ami-05050ce70d6f97db3" # Modify this with the ubuntu client AMI you created
+  default = "ami-0d608de721309a282" # Modify this with the ubuntu client AMI you created
 }
 
 # This is your keypair name for connecting to the instance.  Change it to a valid keypair in our account/region.

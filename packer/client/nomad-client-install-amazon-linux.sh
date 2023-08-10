@@ -15,10 +15,11 @@ fi
 
 # Install docker
 sudo amazon-linux-extras install docker -y
+sudo yum install docker -y
 sudo systemctl restart docker
 
 # Set up volumes
-sudo mkdir /data /data/mysql /data/certs /data/prometheus /data/templates
+sudo mkdir /data /data/mysql /data/certs /data/prometheus /data/templates /mnt/mysql /var/lib/prometheus /var/lib/grafana /var/lib/mysql /var/lib/elk
 sudo chown root -R /data
 
 # Install Nomad
