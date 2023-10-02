@@ -45,7 +45,7 @@ sudo chmod a+w /etc/consul.d
 
 # Consul config file copy
 sudo mkdir -p /tmp/consul
-sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/master/conf/consul/client.hcl -o /tmp/consul/client.hcl
+sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/master/conf/consul/client-ubuntu.hcl -o /tmp/consul/client.hcl
 sudo cp /tmp/consul/client.hcl /etc/consul.d/client.hcl
 
 # Configure Consul Autostart
