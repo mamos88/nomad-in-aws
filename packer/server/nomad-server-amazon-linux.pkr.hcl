@@ -1,6 +1,6 @@
 variable "ami_name" {
   type    = string
-  default = "nomad-server-amazon-linux-1.5.6-v3"
+  default = "nomad-server-amazon-linux-1.6.2-v1"
 }
 
 variable "profile" {
@@ -9,7 +9,7 @@ variable "profile" {
 
 variable "server_source_ami" {
   type = string
-  default = "ami-069d73f3235b535bd"
+  default = "ami-0d406e26e5ad4de53"
 }
 
 variable "region" {
@@ -26,7 +26,7 @@ source "amazon-ebs" "amazon-linux" {
   ssh_username  = "ec2-user"
 
   tags = {
-    Name = "Nomad-Server-1.5.6-amazon-linux"
+    Name = var.ami_name
   }
 }
 

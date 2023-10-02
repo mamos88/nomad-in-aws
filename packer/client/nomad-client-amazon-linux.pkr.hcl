@@ -37,7 +37,7 @@ source "amazon-ebs" "amazon-linux" {
   ssh_username  = "ec2-user"
 
   tags = {
-    Name = "Nomad-Client-1.5.6-amazon-linux"
+    Name = var.amazon_linux_ami_name
   }
 }
 
@@ -50,7 +50,7 @@ source "amazon-ebs" "ubuntu-linux" {
   ssh_username  = "ubuntu"
 
   tags = {
-    Name = "Nomad-Client-1.5.6-ubuntu-linux"
+    Name = var.ubuntu_linux_ami_name
   }
 }
 
