@@ -1,3 +1,4 @@
+# Ubuntu Client Config
 data_dir = "/var/nomad/server"
 
 
