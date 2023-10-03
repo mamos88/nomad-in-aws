@@ -76,7 +76,7 @@ variable "nomad_server_ami_id" {
 variable "nomad_client_amazon_ami_id" {
   description = "AMI ID to use for Nomad client nodes"
   type        = string
-  default = "ami-0cf0445b2e7bbf76e" # Modify this with the Amazon client AMI you created
+  default = "ami-0a3f002114b65a062" # Modify this with the Amazon client AMI you created
 }
 
 variable "server_source_ami_id" {
@@ -88,7 +88,7 @@ variable "server_source_ami_id" {
 variable "nomad_client_ubuntu_ami_id" {
   description = "AMI ID to use for Nomad client nodes"
   type        = string
-  default = "ami-06d26f1bc1c959663" # Modify this with the ubuntu client AMI you created
+  default = "ami-0a2837a85eceb7853" # Modify this with the ubuntu client AMI you created
 }
 
 # This is your keypair name for connecting to the instance.  Change it to a valid keypair in our account/region.
