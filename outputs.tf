@@ -17,3 +17,7 @@ output "nomad_url" {
 output "ec2_nodes" {
   value = aws_instance.nomad-server-node[*].public_dns
 }
+
+output "nomad_security_group" {
+  value = aws_security_group.nomad-sg.id
+}
