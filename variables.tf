@@ -70,7 +70,7 @@ variable "nomad_server_ami_id" {
   description = "AMI ID to use for Nomad server nodes"
   type        = string
   # default = "ami-05536dc705297b831" # Modify this with the server AMI you created
-  default = "ami-0efb3eb280e4b3d0a"
+  default = "ami-0356f4ab26639b022"
 }
 
 variable "nomad_client_amazon_ami_id" {
@@ -79,11 +79,10 @@ variable "nomad_client_amazon_ami_id" {
   default = "ami-0a3f002114b65a062" # Modify this with the Amazon client AMI you created
 }
 
-# variable "server_source_ami_id" {
-#   description = "AMI ID to use for Nomad server nodes"
-#   type        = string
-#   default = "ami-0efb3eb280e4b3d0a" # Modify this with the Amazon client AMI you created
-# }
+variable "zone_id" {
+  description = "ZoneID for michaelamos.ninja"
+  default = "Z12F6VU55CCD2E"
+}
 
 variable "nomad_client_ubuntu_ami_id" {
   description = "AMI ID to use for Nomad client nodes"

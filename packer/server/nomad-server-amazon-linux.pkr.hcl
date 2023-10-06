@@ -1,6 +1,6 @@
 variable "ami_name" {
   type    = string
-  default = "nomad-server-amazon-linux-1.6.2-v2"
+  default = "nomad-server-amazon-linux-1.6.2-v3"
 }
 
 variable "profile" {
