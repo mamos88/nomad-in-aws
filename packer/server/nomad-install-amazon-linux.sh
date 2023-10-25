@@ -43,7 +43,7 @@ sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/prod/conf/nomad
 sudo cp /tmp/nomad/server.hcl /etc/nomad.d/server.hcl
 
 # Install Consul
-CONSUL_VERSION=1.16.6
+CONSUL_VERSION=1.16.2
 
 sudo curl -sSL https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip > consul.zip
 if [ ! -d consul ]; then

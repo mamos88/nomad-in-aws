@@ -1,17 +1,16 @@
 resource "aws_instance" "nomad-server-node" {
-  count                       = var.nomad_server_count
+  for_each = data.aws_subnet.nomad-lab
   ami                         = var.nomad_server_ami_id
   instance_type               = var.nomad_server_instance_type
   key_name                    = var.aws_key_name
-  subnet_id                   = aws_subnet.nomad-lab-pub[count.index].id
+  subnet_id                   = each.key
   vpc_security_group_ids      = [aws_security_group.nomad-sg.id]
   associate_public_ip_address = true
-  # user_data                   = file("conf/install-nomad.sh")
-  private_ip                  = "10.0.${count.index}.100"
+  private_ip                  = cidrhost(each.value.cidr_block, 100)
 
   tags = {
     Terraform     = "true"
-    Name          = "nomad-server-${count.index + 1}"
+    Name          = "nomad-server"
     ManagedBy     = "Terraform"
   }
 }

@@ -20,6 +20,6 @@ resource "azuredevops_variable_group" "myapp" {
 
   variable {
     name  = "nomad_server_url"
-    value = "http://${aws_instance.nomad-server-node[0].public_ip}:4646"
+    value = "http://${[for i in aws_instance.nomad-server-node: i.public_ip][0]}:4646"
   }
 }

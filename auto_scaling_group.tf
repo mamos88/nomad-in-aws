@@ -4,7 +4,8 @@ resource "aws_autoscaling_group" "NomadAmazonLinuxClientASG" {
     max_size = 3
     min_size = 3
 
-    vpc_zone_identifier = [for subnet in aws_subnet.nomad-lab-pub: subnet.id]
+    # vpc_zone_identifier = [for subnet in aws_subnet.nomad-lab: subnet.id]
+    vpc_zone_identifier = [for subnet in data.aws_subnet.nomad-lab: subnet.id]
     
     launch_template {
         id = aws_launch_template.NomadAmazonLinuxClientLC.id
@@ -25,7 +26,8 @@ resource "aws_autoscaling_group" "UbuntuLinuxClientASG" {
     max_size = 0
     min_size = 0
 
-    vpc_zone_identifier = [for subnet in aws_subnet.nomad-lab-pub: subnet.id]
+    # vpc_zone_identifier = [for subnet in aws_subnet.nomad-lab-pub: subnet.id]
+    vpc_zone_identifier = [for subnet in data.aws_subnet.nomad-lab: subnet.id]
     
     launch_template {
         id = aws_launch_template.UbuntuLinuxClientLC.id

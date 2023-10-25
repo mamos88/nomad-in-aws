@@ -62,7 +62,7 @@ variable "health_check" {
 variable "allowed_ip_network" {
   description = "Networks allowed in security group for ingress rules"
   type        = list(any)
-  default     = ["184.98.60.146/32", "10.0.0.0/16"] # Modify this with your local machine IP. Only replace the 174.26.226.144 with your IP.
+  default     = ["184.101.96.237/32", "10.0.0.0/16"] # Modify this with your local machine IP. Only replace the 174.26.226.144 with your IP.
 }
 
 # This is the AMI for the Server node.  Change it to match the one generated with Packer server AMI build
@@ -70,7 +70,7 @@ variable "nomad_server_ami_id" {
   description = "AMI ID to use for Nomad server nodes"
   type        = string
   # default = "ami-05536dc705297b831" # Modify this with the server AMI you created
-  default = "ami-0356f4ab26639b022"
+  default = "ami-0594eaa670a2f04e2"
 }
 
 variable "nomad_client_amazon_ami_id" {

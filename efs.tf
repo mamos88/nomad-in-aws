@@ -9,7 +9,8 @@ resource "aws_efs_file_system" "mysql" {
 resource "aws_efs_mount_target" "mysql_mount_target" {
   count = var.subnet_count
   file_system_id = aws_efs_file_system.mysql.id
-  subnet_id = aws_subnet.nomad-lab-pub[count.index].id
+  # subnet_id = aws_subnet.nomad-lab-pub[count.index].id
+  subnet_id = values(local.subnet_ids)[count.index]
   security_groups = [aws_security_group.nomad-sg.id]
 }
 
