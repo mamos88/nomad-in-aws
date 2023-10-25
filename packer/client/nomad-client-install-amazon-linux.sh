@@ -18,12 +18,18 @@ sudo amazon-linux-extras install docker -y
 sudo yum install docker -y
 sudo systemctl restart docker
 
+# Install nfs tools
+sudo yum install amazon-efs-utils -y
+
 # Set up volumes
 sudo mkdir /data /data/mysql /data/certs /data/prometheus /data/templates /mnt/mysql /var/lib/prometheus /var/lib/grafana /var/lib/mysql /var/lib/elk
 sudo chown root -R /data
 
+# Set up max_map_count for elk
+echo "vm.max_map_count=262144" >> /etc/sysctl.conf
+
 # Install Nomad
-NOMAD_VERSION=1.6.0
+NOMAD_VERSION=1.6.2
 sudo curl -sSL https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip -o nomad.zip
 if [ ! -d nomad ]; then
   sudo unzip nomad.zip
@@ -40,11 +46,11 @@ sudo chmod a+w /etc/nomad.d
 
 # Nomad config file copy
 sudo mkdir -p /tmp/nomad
-sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/master/conf/nomad/client.hcl -o /tmp/nomad/client.hcl
+sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/prod/conf/nomad/client.hcl -o /tmp/nomad/client.hcl
 sudo cp /tmp/nomad/client.hcl /etc/nomad.d/client.hcl
 
 # Install Consul
-CONSUL_VERSION=1.16.0
+CONSUL_VERSION=1.16.2
 
 sudo curl -sSL https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip > consul.zip
 if [ ! -d consul ]; then
@@ -62,7 +68,7 @@ sudo chmod a+w /etc/consul.d
 
 # Consul config file copy
 sudo mkdir -p /tmp/consul
-sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/master/conf/consul/client.hcl -o /tmp/consul/client.hcl
+sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/prod/conf/consul/client.hcl -o /tmp/consul/client.hcl
 sudo cp /tmp/consul/client.hcl /etc/consul.d/client.hcl
 
 
@@ -102,14 +108,14 @@ fi
 # sudo nohup nomad agent -config /etc/nomad.d/client.hcl >$HOME/nomad.log &
 
 # Configure Nomad Autostart
-sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/master/conf/nomad/nomad.service -o /tmp/nomad/nomad.service
+sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/prod/conf/nomad/nomad.service -o /tmp/nomad/nomad.service
 sudo cp /tmp/nomad/nomad.service /etc/systemd/system/nomad.service
 sudo systemctl enable nomad
 
 # sudo systemctl start nomad
 
 # Configure Consul Autostart
-sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/master/conf/consul/consul-client.service -o /tmp/consul/consul.service
+sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/prod/conf/consul/consul-client.service -o /tmp/consul/consul.service
 sudo cp /tmp/consul/consul.service /etc/systemd/system/consul.service
 sudo systemctl enable consul
 

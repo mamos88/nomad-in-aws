@@ -24,7 +24,7 @@ KillSignal=SIGINT
 LimitNOFILE=65536
 LimitNPROC=infinity
 Restart=on-failure
-RestartSec=2
+RestartSec=10s
 
 ## Configure unit start rate limiting. Units which are started more than
 ## *burst* times within an *interval* time span are not permitted to start any

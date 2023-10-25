@@ -3,7 +3,8 @@ resource "aws_lb" "test" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.nomad-sg.id]
-  subnets            = flatten(["${aws_subnet.nomad-lab-pub.*.id}"])
+  # subnets            = flatten(["${aws_subnet.nomad-lab-pub.*.id}"])
+  subnets = flatten([values(local.subnet_ids)])
 
   enable_deletion_protection = false
 
@@ -29,7 +30,8 @@ resource "aws_lb_target_group" "test" {
   name     = "tf-example-lb-tg"
   port     = 8080
   protocol = "HTTP"
-  vpc_id   = "${aws_vpc.nomad-lab-vpc.id}"
+  # vpc_id   = "${aws_vpc.nomad-lab-vpc.id}"
+  vpc_id   = "${data.aws_vpc.nomad-lab-vpc.id}"
   health_check {
     healthy_threshold = var.health_check["healthy_threshold"]
     interval = var.health_check["interval"]

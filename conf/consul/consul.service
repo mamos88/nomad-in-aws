@@ -15,6 +15,7 @@ KillMode=process
 KillSignal=SIGTERM
 Restart=on-failure
 LimitNOFILE=65536
+RestartSec=10s
 
 [Install]
 WantedBy=multi-user.target

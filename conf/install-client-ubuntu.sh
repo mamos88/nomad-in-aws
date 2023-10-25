@@ -75,3 +75,6 @@ sudo cp /tmp/nomad/client.hcl /etc/nomad.d/client.hcl
 sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/master/conf/nomad/nomad.service -o /tmp/nomad/nomad.service
 sudo cp /tmp/nomad/nomad.service /etc/systemd/system/nomad.service
 sudo systemctl enable nomad
+
+# Test MySQL Nomad Job Steps
+mkdir -p /var/lib/mysql

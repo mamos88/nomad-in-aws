@@ -1,6 +1,7 @@
 resource "aws_security_group" "nomad-sg" {
   name   = "nomad-sg"
-  vpc_id = aws_vpc.nomad-lab-vpc.id
+  # vpc_id = aws_vpc.nomad-lab-vpc.id
+  vpc_id = data.aws_vpc.nomad-lab-vpc.id
 
   ingress {
     from_port   = 80
@@ -179,6 +180,30 @@ resource "aws_security_group" "nomad-sg" {
     protocol    = "tcp"
     cidr_blocks = var.allowed_ip_network
   }
+  # Grafana
+  ingress {
+    from_port   = 3000
+    to_port     = 3000
+    protocol    = "tcp"
+    cidr_blocks = var.allowed_ip_network
+  }
+
+# Elasticsearch
+  ingress {
+    from_port   = 9200
+    to_port     = 9200
+    protocol    = "tcp"
+    cidr_blocks = var.allowed_ip_network
+  }
+
+# Kibana
+  ingress {
+    from_port   = 5601
+    to_port     = 5601
+    protocol    = "tcp"
+    cidr_blocks = var.allowed_ip_network
+  }
+
 
   ingress {
     from_port   = 0

@@ -62,33 +62,38 @@ variable "health_check" {
 variable "allowed_ip_network" {
   description = "Networks allowed in security group for ingress rules"
   type        = list(any)
-  default     = ["184.98.50.94/32", "10.0.0.0/16"] # Modify this with your local machine IP. Only replace the 174.26.226.144 with your IP.
+  default     = ["184.101.96.237/32", "10.0.0.0/16"] # Modify this with your local machine IP. Only replace the 174.26.226.144 with your IP.
 }
 
 # This is the AMI for the Server node.  Change it to match the one generated with Packer server AMI build
 variable "nomad_server_ami_id" {
   description = "AMI ID to use for Nomad server nodes"
   type        = string
-  default = "ami-07e1523fd61279e28" # Modify this with the server AMI you created
+  # default = "ami-05536dc705297b831" # Modify this with the server AMI you created
+  default = "ami-0594eaa670a2f04e2"
 }
 
 variable "nomad_client_amazon_ami_id" {
-  description = "AMI ID to use for Nomad server nodes"
+  description = "AMI ID to use for Nomad client nodes"
   type        = string
-  default = "ami-0c0408c0144a15657" # Modify this with the Amazon client AMI you created
+  default = "ami-0a3f002114b65a062" # Modify this with the Amazon client AMI you created
+}
+
+variable "zone_id" {
+  description = "ZoneID for michaelamos.ninja"
+  default = "Z12F6VU55CCD2E"
 }
 
 variable "nomad_client_ubuntu_ami_id" {
-  description = "AMI ID to use for Nomad server nodes"
+  description = "AMI ID to use for Nomad client nodes"
   type        = string
-  default = "ami-0d608de721309a282" # Modify this with the ubuntu client AMI you created
+  default = "ami-0a2837a85eceb7853" # Modify this with the ubuntu client AMI you created
 }
 
 # This is your keypair name for connecting to the instance.  Change it to a valid keypair in our account/region.
 variable "aws_key_name" {
   description = "SSH key name"
   type        = string
-  default     = "test1-keypair" # Modify this with the keypair you created
 }
 
 variable "profile" {

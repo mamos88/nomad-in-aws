@@ -1,3 +1,4 @@
+# Ubuntu Client Config
 data_dir = "/var/nomad/server"
 
 
@@ -5,9 +6,9 @@ datacenter = "dc-aws-1"
 region = "region-aws-1"
 
 advertise {
-  http = "{{ GetInterfaceIP `enX0` }}"
-  rpc  = "{{ GetInterfaceIP `enX0` }}"
-  serf = "{{ GetInterfaceIP `enX0` }}"
+  http = "{{ GetInterfaceIP `eth0` }}"
+  rpc  = "{{ GetInterfaceIP `eth0` }}"
+  serf = "{{ GetInterfaceIP `eth0` }}"
 }
 
 plugin "raw_exec" {
@@ -18,7 +19,7 @@ plugin "raw_exec" {
 
 client {
   enabled           = true
-  network_interface = "enX0"
+  network_interface = "eth0"
   servers           = ["10.0.0.100", "10.0.1.100", "10.0.2.100"]
   host_volume "mysql" {
     path = "/var/lib/mysql"
@@ -36,6 +37,7 @@ client {
     path = "/var/lib/elk"
     read_only = false
   }
+
 }
 
 
