@@ -16,7 +16,6 @@ fi
 # Install docker
 sudo amazon-linux-extras install docker -y
 sudo yum install docker -y
-
 sudo systemctl restart docker
 
 # Install nfs tools

@@ -23,6 +23,7 @@ sudo chown root -R /data
 
 # Install Nomad
 NOMAD_VERSION=1.6.2
+
 sudo curl -sSL https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip -o nomad.zip
 if [ ! -d nomad ]; then
   sudo unzip nomad.zip

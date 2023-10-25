@@ -36,7 +36,6 @@ client {
     path = "/var/lib/elk"
     read_only = false
   }
-
 }
 
 
