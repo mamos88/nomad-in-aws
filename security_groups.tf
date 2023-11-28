@@ -209,7 +209,7 @@ resource "aws_security_group" "nomad-sg" {
     from_port   = 21000
     to_port     = 21255
     protocol    = "tcp"
-    cidr_blocks = var.allowed_ip_network
+    cidr_blocks = ["174.26.254.31/32", "10.0.0.0/16"]
   }
 
   ingress {

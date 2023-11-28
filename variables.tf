@@ -59,11 +59,13 @@ variable "health_check" {
 # These are variables you need to change before run time
 # --------------------------------------------------------
 # Change the first element in the list to your IP address
+/*
 variable "allowed_ip_network" {
   description = "Networks allowed in security group for ingress rules"
   type        = list(any)
   default     = ["174.26.254.31/32", "10.0.0.0/16"] # Modify this with your local machine IP. Only replace the 174.26.226.144 with your IP.
 }
+*/
 
 # This is the AMI for the Server node.  Change it to match the one generated with Packer server AMI build
 variable "nomad_server_ami_id" {
