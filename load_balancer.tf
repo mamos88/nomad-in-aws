@@ -14,17 +14,31 @@ resource "aws_lb" "test" {
 }
 
 
-resource "aws_lb_listener" "front_end" {
+#resource "aws_lb_listener" "front_end" {
+#  load_balancer_arn = "${aws_lb.test.arn}"
+#  port              = "80"
+#  protocol          = "HTTP"
+
+#  default_action {
+#    type             = "forward"
+#    target_group_arn = "${aws_lb_target_group.test.arn}"
+#  }
+#}
+
+
+resource "aws_lb_listener" "front_end_https" {
   load_balancer_arn = "${aws_lb.test.arn}"
-  port              = "80"
-  protocol          = "HTTP"
+  port              = "443"
+  protocol          = "HTTPS"
+
+  ssl_policy = "ELBSecurityPolicy-TLS13-1-2-2021-06"
+  certificate_arn = "arn:aws:acm:us-east-2:011880685863:certificate/208f637e-ba55-4313-8c3f-837df4687fb4"
 
   default_action {
     type             = "forward"
     target_group_arn = "${aws_lb_target_group.test.arn}"
   }
 }
-
 
 resource "aws_lb_target_group" "test" {
   name     = "tf-example-lb-tg"
