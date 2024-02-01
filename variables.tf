@@ -91,12 +91,13 @@ variable "nomad_client_ubuntu_ami_id" {
 }
 
 # This is your keypair name for connecting to the instance.  Change it to a valid keypair in our account/region.
-variable "aws_key_name" {
-  description = "SSH key name"
-  type        = string
-}
+# variable "aws_key_name" {
+#   description = "SSH key name"
+#   type        = string
+# }
 
 variable "profile" {
   description = "This is your AWS profile"
   type = string
+  default = "default"
 }
