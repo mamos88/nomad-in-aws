@@ -173,38 +173,6 @@ resource "aws_security_group" "nomad-sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # # Prometheus
-  ingress {
-    from_port   = 9090
-    to_port     = 9090
-    protocol    = "tcp"
-    cidr_blocks = var.allowed_ip_network
-  }
-  # Grafana
-  ingress {
-    from_port   = 3000
-    to_port     = 3000
-    protocol    = "tcp"
-    cidr_blocks = var.allowed_ip_network
-  }
-
-# Elasticsearch
-  ingress {
-    from_port   = 9200
-    to_port     = 9200
-    protocol    = "tcp"
-    cidr_blocks = var.allowed_ip_network
-  }
-
-# Kibana
-  ingress {
-    from_port   = 5601
-    to_port     = 5601
-    protocol    = "tcp"
-    cidr_blocks = var.allowed_ip_network
-  }
-
-
   ingress {
     from_port   = 0
     to_port     = 65535
