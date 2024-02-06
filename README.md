@@ -10,6 +10,7 @@ This repository was created to help individuals that want to quickly and easily 
 2. You have HashiCorp Terraform, HashiCorp Packer, git and AWS CLI installed on your local machine
 3. You have created an IAM user assigned the appropriate permissions and created an access key (This will be needed by Terraform and Packer)
 4. You have an IDE installed such as Visual Studio Code
+5. The network configuration, i.e., VPC, subnets, etc., have been moved out of this code base into the base_network repository.  This allows the network to be provisioned by itself so other deployments could use the same network setup.
 
 # Pre-deployment Installation
 * Terraform installation can be found at: https://developer.hashicorp.com/terraform/downloads
