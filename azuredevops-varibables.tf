@@ -2,11 +2,6 @@ data "azuredevops_project" "myapp" {
   name = "myapp"
 }
 
-# output "project" {
-#   value = data.azuredevops_project.myapp
-  
-# }
-
 resource "azuredevops_variable_group" "myapp" {
   project_id   = data.azuredevops_project.myapp.id
   name         = "nomad-variables"

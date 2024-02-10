@@ -14,18 +14,6 @@ resource "aws_lb" "test" {
 }
 
 
-#resource "aws_lb_listener" "front_end" {
-#  load_balancer_arn = "${aws_lb.test.arn}"
-#  port              = "80"
-#  protocol          = "HTTP"
-
-#  default_action {
-#    type             = "forward"
-#    target_group_arn = "${aws_lb_target_group.test.arn}"
-#  }
-#}
-
-
 resource "aws_lb_listener" "front_end_https" {
   load_balancer_arn = "${aws_lb.test.arn}"
   port              = "443"
@@ -55,13 +43,3 @@ resource "aws_lb_target_group" "test" {
     port = var.health_check["port"]
   }
 }
-
-
-# resource "aws_lb_target_group_attachment" "test" {
-#   for_each = {
-#     "key" = 
-#   }
-#   target_group_arn = "${aws_lb_target_group.test.arn}"
-#   target_id        = aws_instance.amazon-client-nodes.id
-#   port             = 80
-# }
