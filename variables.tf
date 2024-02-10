@@ -1,3 +1,10 @@
+# Enhancment & Refactoring Opportunity:
+# Can these variables be simplified or cleaned up. Also evaluate local variables as an option.
+# Documentation 
+# Local Values: https://developer.hashicorp.com/terraform/language/values/locals
+# Naming Convention: https://www.terraform-best-practices.com/naming
+
+
 variable "aws_region" {
   description = "The region name to deploy into"
   type        = string
