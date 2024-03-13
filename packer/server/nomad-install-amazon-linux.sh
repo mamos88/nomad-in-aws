@@ -22,7 +22,10 @@ sudo mkdir /data /data/mysql /data/certs /data/prometheus /data/templates
 sudo chown root -R /data
 
 sudo groupadd -r consul
-sudo useradd -r -g consul consul
+sudo useradd -r -g consul -d /home/consul consul
+sudo mkdir -p /home/consul
+sudo chown consul:consul /home/consul
+sudo chmod 700 /home/consul
 
 # Install Nomad
 NOMAD_VERSION=1.7.6
@@ -43,7 +46,7 @@ sudo chmod a+w /etc/nomad.d
 
 # Nomad config file copy
 sudo mkdir -p /tmp/nomad
-sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/prod/conf/nomad/server.hcl -o /tmp/nomad/server.hcl
+sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/master/conf/nomad/server.hcl -o /tmp/nomad/server.hcl
 sudo cp /tmp/nomad/server.hcl /etc/nomad.d/server.hcl
 
 # Install Consul
@@ -65,7 +68,7 @@ sudo chmod a+w /etc/consul.d
 
 # Consul config file copy
 sudo mkdir -p /tmp/consul
-sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/prod/conf/consul/server.hcl -o /tmp/consul/server.hcl
+sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/master/conf/consul/server.hcl -o /tmp/consul/server.hcl
 sudo cp /tmp/consul/server.hcl /etc/consul.d/server.hcl
 
 
@@ -105,17 +108,20 @@ fi
 # sudo nohup nomad agent -config /etc/nomad.d/server.hcl >$HOME/nomad.log &
 
 # Configure Nomad Autostart
-sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/prod/conf/nomad/nomad.service -o /tmp/nomad/nomad.service
+sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/master/conf/nomad/nomad.service -o /tmp/nomad/nomad.service
 sudo cp /tmp/nomad/nomad.service /etc/systemd/system/nomad.service
 sudo systemctl enable nomad
 
 # Configure Consul Autostart
-sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/prod/conf/consul/consul.service -o /tmp/consul/consul.service
+sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/master/conf/consul/consul.service -o /tmp/consul/consul.service
 sudo cp /tmp/consul/consul.service /etc/systemd/system/consul.service
 sudo systemctl enable consul
 
 # Configure Docker Autostart
 # sudo systemctl enable docker
+
+
+sudo chown -R consul: consul /var/consul
 
 # Bootstrap Nomad and Consul ACL environment
 

@@ -17,7 +17,10 @@ sudo apt-get update && sudo apt-get install consul -y
 sudo usermod -aG docker ubuntu
 
 sudo groupadd -r consul
-sudo useradd -r -g consul consul
+sudo useradd -r -g consul -d /home/consul consul
+sudo mkdir -p /home/consul
+sudo chown consul:consul /home/consul
+sudo chmod 700 /home/consul
 
 # Set up volumes
 sudo mkdir /data /data/mysql /data/certs /data/prometheus /data/templates /mnt/mysql /var/lib/prometheus /var/lib/grafana /var/lib/mysql /var/lib/elk
