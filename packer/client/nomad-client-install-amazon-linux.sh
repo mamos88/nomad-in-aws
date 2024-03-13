@@ -13,10 +13,15 @@ if [ ! -d /tmp/archive ]; then
   sudo mkdir /tmp/archive/
 fi
 
+# Add Consul User
+sudo groupadd -r consul
+sudo useradd -r -g consul consul
+
 # Install docker
 sudo amazon-linux-extras install docker -y
 sudo yum install docker -y
 sudo systemctl restart docker
+
 
 # Install nfs tools
 sudo yum install amazon-efs-utils -y
@@ -29,7 +34,7 @@ sudo chown root -R /data
 echo "vm.max_map_count=262144" >> /etc/sysctl.conf
 
 # Install Nomad
-NOMAD_VERSION=1.6.2
+NOMAD_VERSION=1.7.6
 sudo curl -sSL https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip -o nomad.zip
 if [ ! -d nomad ]; then
   sudo unzip nomad.zip
@@ -50,7 +55,7 @@ sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/prod/conf/nomad
 sudo cp /tmp/nomad/client.hcl /etc/nomad.d/client.hcl
 
 # Install Consul
-CONSUL_VERSION=1.16.2
+CONSUL_VERSION=1.18.0
 
 sudo curl -sSL https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip > consul.zip
 if [ ! -d consul ]; then

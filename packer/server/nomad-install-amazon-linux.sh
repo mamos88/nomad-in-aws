@@ -21,8 +21,11 @@ fi
 sudo mkdir /data /data/mysql /data/certs /data/prometheus /data/templates
 sudo chown root -R /data
 
+sudo groupadd -r consul
+sudo useradd -r -g consul consul
+
 # Install Nomad
-NOMAD_VERSION=1.6.2
+NOMAD_VERSION=1.7.6
 
 sudo curl -sSL https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip -o nomad.zip
 if [ ! -d nomad ]; then
@@ -44,7 +47,7 @@ sudo curl https://raw.githubusercontent.com/mamos88/nomad-in-aws/prod/conf/nomad
 sudo cp /tmp/nomad/server.hcl /etc/nomad.d/server.hcl
 
 # Install Consul
-CONSUL_VERSION=1.16.2
+CONSUL_VERSION=1.18.0
 
 sudo curl -sSL https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip > consul.zip
 if [ ! -d consul ]; then

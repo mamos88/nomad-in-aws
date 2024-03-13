@@ -16,6 +16,9 @@ sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(l
 sudo apt-get update && sudo apt-get install consul -y
 sudo usermod -aG docker ubuntu
 
+sudo groupadd -r consul
+sudo useradd -r -g consul consul
+
 # Set up volumes
 sudo mkdir /data /data/mysql /data/certs /data/prometheus /data/templates /mnt/mysql /var/lib/prometheus /var/lib/grafana /var/lib/mysql /var/lib/elk
 sudo chown root -R /data
@@ -27,7 +30,7 @@ sudo systemctl enable docker
 
 # Consul
 echo "Installing Consul"
-CONSUL_VERSION=1.16.2
+CONSUL_VERSION=1.18.0
 
 sudo curl -sSL https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip > consul.zip
 if [ ! -d consul ]; then
@@ -55,7 +58,7 @@ sudo systemctl enable consul
 
 # Install Nomad
 echo "Installing Nomad"
-NOMAD_VERSION=1.6.2
+NOMAD_VERSION=1.7.6
 sudo curl -sSL https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip -o nomad.zip
 if [ ! -d nomad ]; then
   sudo unzip nomad.zip
